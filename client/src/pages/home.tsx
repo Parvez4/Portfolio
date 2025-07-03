@@ -20,50 +20,18 @@ export default function Home() {
         <EducationSection />
         <ContactSection />
       </main>
-      <footer className="bg-gradient-to-r from-gray-900 via-sf-dark-gray to-black text-white py-12 border-t border-gray-700/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
-            {/* Brand & Quote */}
-            <div className="md:col-span-2">
-              <h3 className="text-2xl font-bold mb-4 bg-sf-gradient bg-clip-text text-transparent">
-                Parvez Shaik
-              </h3>
-              <p className="text-gray-300 mb-4 max-w-md">
-                Transforming business processes into powerful Salesforce solutions—one automation at a time.
-              </p>
-              <div className="flex items-center space-x-2">
-                <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                <span className="text-sm text-gray-400">Available for new opportunities</span>
-              </div>
+      <footer className="bg-gray-900 text-white py-12">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="mb-6 md:mb-0 text-center md:text-left">
+              <h3 className="text-xl font-bold text-white mb-2">Parvez Shaik</h3>
+              <p className="text-gray-400">Salesforce Developer & Full-Stack Engineer</p>
             </div>
             
-            {/* Quick Links */}
-            <div>
-              <h4 className="font-semibold mb-4 text-white">Quick Links</h4>
-              <div className="space-y-2">
-                {['About', 'Skills', 'Projects', 'Contact'].map((item) => (
-                  <button
-                    key={item}
-                    onClick={() => document.getElementById(item.toLowerCase())?.scrollIntoView({ behavior: 'smooth' })}
-                    className="block text-gray-400 hover:text-sf-blue transition-colors duration-200"
-                  >
-                    {item}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-          
-          {/* Bottom Section */}
-          <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-gray-700/50">
-            <div className="mb-4 md:mb-0">
-              <p className="text-gray-400">© 2025 Parvez Shaik. All rights reserved.</p>
-            </div>
             <div className="flex space-x-6">
               {[
                 { href: "https://linkedin.com/in/parvez-shaik", icon: "fab fa-linkedin", label: "LinkedIn" },
                 { href: "https://github.com/ParvezShaik", icon: "fab fa-github", label: "GitHub" },
-                { href: "https://www.salesforce.com/trailblazer/parvez", icon: "fas fa-cloud", label: "Trailhead" },
                 { href: "mailto:parshaik@iu.edu", icon: "fas fa-envelope", label: "Email" }
               ].map((social, index) => (
                 <a 
@@ -71,13 +39,17 @@ export default function Home() {
                   href={social.href}
                   target={social.href.startsWith('http') ? '_blank' : undefined}
                   rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="text-gray-400 hover:text-sf-blue transition-all duration-300 hover:scale-110 p-2 rounded-lg hover:bg-sf-blue/10"
+                  className="text-gray-400 hover:text-blue-400 transition-colors duration-300 p-2"
                   title={social.label}
                 >
                   <i className={`${social.icon} text-xl`}></i>
                 </a>
               ))}
             </div>
+          </div>
+          
+          <div className="border-t border-gray-700 mt-8 pt-8 text-center">
+            <p className="text-gray-400">© 2025 Parvez Shaik. All rights reserved.</p>
           </div>
         </div>
       </footer>

@@ -1,134 +1,157 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Download, Mail, Github, Linkedin, ExternalLink } from "lucide-react";
-import { scrollToSection } from "@/lib/utils";
+import { Card } from "@/components/ui/card";
+import { Download, ArrowRight, MapPin, GraduationCap, Star } from "lucide-react";
 
 export default function HeroSection() {
-  const handleResumeDownload = () => {
-    window.open("/api/resume", "_blank");
+  const scrollToContact = () => {
+    const element = document.getElementById("contact");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
+  const certifications = [
+    "Platform Developer I",
+    "App Builder", 
+    "Administrator"
+  ];
+
+  const skills = [
+    "Apex", "Lightning Web Components", "React", "Node.js", "PostgreSQL"
+  ];
+
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-sf-hero-gradient">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-sf-blue/10 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-sf-light-blue/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '-3s' }}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-sf-accent/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '-1.5s' }}></div>
-      </div>
-      
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="animate-fade-in">
-          {/* Professional Avatar with Glass Effect */}
-          <div className="w-40 h-40 mx-auto mb-8 rounded-full bg-sf-gradient flex items-center justify-center shadow-2xl glass-effect animate-float">
-            <span className="text-white text-5xl font-bold">PS</span>
-          </div>
-          
-          {/* Main Heading with Gradient Text */}
-          <h1 className="text-6xl md:text-8xl font-extrabold mb-6 animate-slide-up">
-            <span className="text-white">Hello, I'm</span>
-            <br />
-            <span className="text-gradient">Parvez Shaik</span>
-          </h1>
-          
-          <div className="animate-slide-up" style={{ animationDelay: '0.2s' }}>
-            <p className="text-xl md:text-2xl text-gray-200 mb-4 max-w-4xl mx-auto leading-relaxed">
-              Transforming business processes into powerful Salesforce solutions—one automation at a time.
-            </p>
-            <p className="text-lg text-gray-300 mb-8 max-w-3xl mx-auto">
-              Certified Salesforce Developer with 3+ years of experience building scalable, testable solutions using Apex, LWC, Flows, and REST APIs
-            </p>
-          </div>
-          
-          {/* Certifications with Enhanced Design */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12 animate-slide-up" style={{ animationDelay: '0.4s' }}>
-            {[
-              { icon: "fas fa-certificate", text: "Platform Developer I" },
-              { icon: "fas fa-certificate", text: "App Builder" },
-              { icon: "fas fa-certificate", text: "Administrator" }
-            ].map((cert, index) => (
-              <Badge key={index} className="glass-effect px-6 py-3 text-white border-white/20 hover-lift">
-                <i className={`${cert.icon} text-sf-accent mr-2`}></i>
-                <span className="font-semibold">{cert.text}</span>
-              </Badge>
-            ))}
-          </div>
-          
-          {/* Enhanced CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12 animate-slide-up" style={{ animationDelay: '0.6s' }}>
-            <Button 
-              onClick={() => scrollToSection("projects")}
-              className="bg-sf-gradient text-white px-10 py-4 text-lg font-semibold rounded-xl shadow-2xl hover:shadow-sf-blue/25 hover:scale-105 transition-all duration-300"
-            >
-              View My Work
-            </Button>
-            <Button 
-              variant="outline"
-              onClick={() => scrollToSection("contact")}
-              className="glass-effect text-white px-10 py-4 text-lg font-semibold rounded-xl border-white/30 hover:bg-white/10 hover:scale-105 transition-all duration-300"
-            >
-              <Mail className="mr-2 h-5 w-5" />
-              Get In Touch
-            </Button>
-          </div>
-          
-          {/* Enhanced Social Links */}
-          <div className="flex justify-center space-x-8 animate-slide-up" style={{ animationDelay: '0.8s' }}>
-            {[
-              { 
-                href: "https://linkedin.com/in/parvez-shaik", 
-                icon: <Linkedin className="w-6 h-6" />, 
-                label: "LinkedIn" 
-              },
-              { 
-                href: "https://github.com/ParvezShaik", 
-                icon: <Github className="w-6 h-6" />, 
-                label: "GitHub" 
-              },
-              { 
-                href: "https://www.salesforce.com/trailblazer/parvez", 
-                icon: <ExternalLink className="w-6 h-6" />, 
-                label: "Trailhead" 
-              },
-              { 
-                href: "mailto:parshaik@iu.edu", 
-                icon: <Mail className="w-6 h-6" />, 
-                label: "Email" 
-              }
-            ].map((social, index) => (
-              <a 
-                key={index}
-                href={social.href}
-                target={social.href.startsWith('http') ? '_blank' : undefined}
-                rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                className="group flex flex-col items-center space-y-2 text-gray-300 hover:text-white transition-all duration-300 hover:scale-110"
-              >
-                <div className="p-3 rounded-full glass-effect group-hover:bg-sf-blue/20 transition-all duration-300">
-                  {social.icon}
+    <section id="home" className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 pt-16">
+      <div className="max-w-6xl mx-auto px-6 py-20">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <div className="space-y-8">
+            <div className="space-y-4">
+              <div className="flex items-center space-x-2 text-blue-600">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span className="text-sm font-medium">Available for opportunities</span>
+              </div>
+              
+              <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+                Parvez <span className="text-blue-600">Shaik</span>
+              </h1>
+              
+              <p className="text-xl text-gray-600 leading-relaxed">
+                Salesforce Developer & Full-Stack Engineer specializing in scalable CRM solutions and modern web applications
+              </p>
+            </div>
+
+            {/* Key Info Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <Card className="p-4 bg-white/80 backdrop-blur-sm border-0 shadow-lg">
+                <div className="flex items-center space-x-3">
+                  <div className="p-2 bg-blue-100 rounded-lg">
+                    <GraduationCap className="w-5 h-5 text-blue-600" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-600">Education</p>
+                    <p className="font-semibold text-gray-900">MS Computer Science</p>
+                    <p className="text-sm text-gray-500">Indiana University</p>
+                  </div>
                 </div>
-                <span className="text-sm font-medium opacity-70 group-hover:opacity-100">{social.label}</span>
-              </a>
-            ))}
+              </Card>
+
+              <Card className="p-4 bg-white/80 backdrop-blur-sm border-0 shadow-lg">
+                <div className="flex items-center space-x-3">
+                  <div className="p-2 bg-green-100 rounded-lg">
+                    <Star className="w-5 h-5 text-green-600" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-600">Experience</p>
+                    <p className="font-semibold text-gray-900">3+ Years</p>
+                    <p className="text-sm text-gray-500">Salesforce Development</p>
+                  </div>
+                </div>
+              </Card>
+            </div>
+
+            {/* Skills */}
+            <div className="space-y-3">
+              <h3 className="text-lg font-semibold text-gray-900">Core Technologies</h3>
+              <div className="flex flex-wrap gap-2">
+                {skills.map((skill, index) => (
+                  <Badge key={index} variant="secondary" className="bg-blue-100 text-blue-800 hover:bg-blue-200">
+                    {skill}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+
+            {/* Certifications */}
+            <div className="space-y-3">
+              <h3 className="text-lg font-semibold text-gray-900">Salesforce Certifications</h3>
+              <div className="flex flex-wrap gap-2">
+                {certifications.map((cert, index) => (
+                  <Badge key={index} className="bg-blue-600 text-white">
+                    {cert}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button 
+                onClick={scrollToContact}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg font-semibold group"
+              >
+                Get In Touch
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+              
+              <Button 
+                variant="outline"
+                className="border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-3 text-lg font-semibold"
+                onClick={() => window.open('/api/resume', '_blank')}
+              >
+                <Download className="mr-2 w-5 h-5" />
+                Resume
+              </Button>
+            </div>
+
+            {/* Location */}
+            <div className="flex items-center space-x-2 text-gray-600">
+              <MapPin className="w-4 h-4" />
+              <span>Indiana, USA • Open to relocation</span>
+            </div>
           </div>
-          
-          {/* Download Resume Button */}
-          <div className="mt-12 animate-slide-up" style={{ animationDelay: '1s' }}>
-            <Button 
-              variant="ghost"
-              onClick={handleResumeDownload}
-              className="text-gray-300 hover:text-white px-6 py-2 rounded-lg border border-gray-500/30 hover:border-white/50 transition-all duration-300"
-            >
-              <Download className="mr-2 h-4 w-4" />
-              Download Resume
-            </Button>
+
+          {/* Right Content - Profile Image */}
+          <div className="flex justify-center lg:justify-end">
+            <div className="relative">
+              <div className="w-80 h-80 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full p-1">
+                <div className="w-full h-full bg-white rounded-full p-2">
+                  <img
+                    src="https://images.unsplash.com/photo-1608889825103-eb5ed706fc64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80"
+                    alt="Captain America - Placeholder"
+                    className="w-full h-full object-cover rounded-full"
+                  />
+                </div>
+              </div>
+              
+              {/* Floating Achievement Badge */}
+              <div className="absolute -top-4 -right-4 bg-white rounded-full p-4 shadow-lg">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-blue-600">5K+</div>
+                  <div className="text-xs text-gray-600">Users Served</div>
+                </div>
+              </div>
+              
+              {/* Floating Years Badge */}
+              <div className="absolute -bottom-4 -left-4 bg-white rounded-full p-4 shadow-lg">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-green-600">3+</div>
+                  <div className="text-xs text-gray-600">Years Exp</div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white/50 rounded-full mt-2 animate-pulse"></div>
         </div>
       </div>
     </section>

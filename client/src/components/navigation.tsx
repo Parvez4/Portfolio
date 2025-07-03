@@ -1,33 +1,33 @@
 import { useState, useEffect } from "react";
-import { cn, scrollToSection } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
-
-const navItems = [
-  { href: "home", label: "Home" },
-  { href: "about", label: "About" },
-  { href: "skills", label: "Skills" },
-  { href: "experience", label: "Experience" },
-  { href: "projects", label: "Projects" },
-  { href: "contact", label: "Contact" },
-];
+import { cn } from "@/lib/utils";
 
 export default function Navigation() {
   const [activeSection, setActiveSection] = useState("home");
-  const [isOpen, setIsOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const navItems = [
+    { label: "Home", href: "home" },
+    { label: "About", href: "about" },
+    { label: "Skills", href: "skills" },
+    { label: "Experience", href: "experience" },
+    { label: "Projects", href: "projects" },
+    { label: "Education", href: "education" },
+    { label: "Contact", href: "contact" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
       const sections = navItems.map(item => item.href);
       const scrollPosition = window.scrollY + 100;
 
-      for (const sectionId of sections) {
-        const element = document.getElementById(sectionId);
+      for (const section of sections) {
+        const element = document.getElementById(section);
         if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(sectionId);
+          const offsetTop = element.offsetTop;
+          const offsetBottom = offsetTop + element.offsetHeight;
+
+          if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
+            setActiveSection(section);
             break;
           }
         }
@@ -39,8 +39,11 @@ export default function Navigation() {
   }, []);
 
   const handleNavClick = (sectionId: string) => {
-    scrollToSection(sectionId);
-    setIsOpen(false);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+    setIsMenuOpen(false);
   };
 
   return (
@@ -49,66 +52,62 @@ export default function Navigation() {
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       />
-      <nav className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-xl shadow-lg border-b border-gray-200/20 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            <div className="flex-shrink-0">
-              <button
-                onClick={() => handleNavClick("home")}
-                className="text-2xl font-bold bg-sf-gradient bg-clip-text text-transparent hover:scale-105 transition-transform duration-300"
-              >
-                Parvez Shaik
-              </button>
-            </div>
-            
-            {/* Desktop Navigation */}
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-8">
-                {navItems.map((item) => (
-                  <button
-                    key={item.href}
-                    onClick={() => handleNavClick(item.href)}
-                    className={cn(
-                      "px-4 py-2 rounded-lg font-medium transition-all duration-300 hover:scale-105",
-                      activeSection === item.href 
-                        ? "text-white bg-sf-gradient shadow-lg" 
-                        : "text-sf-gray hover:text-sf-blue hover:bg-sf-blue/10"
-                    )}
-                  >
-                    {item.label}
-                  </button>
-                ))}
-              </div>
+      <nav className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm shadow-sm border-b border-gray-100 z-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex justify-center items-center h-16">
+            {/* Desktop Navigation - Centered */}
+            <div className="hidden md:flex items-center space-x-8">
+              {navItems.map((item) => (
+                <button
+                  key={item.href}
+                  onClick={() => handleNavClick(item.href)}
+                  className={cn(
+                    "px-4 py-2 text-sm font-medium rounded-full transition-all duration-300",
+                    activeSection === item.href 
+                      ? "bg-blue-600 text-white shadow-lg" 
+                      : "text-gray-700 hover:text-blue-600 hover:bg-blue-50"
+                  )}
+                >
+                  {item.label}
+                </button>
+              ))}
             </div>
 
-            {/* Mobile Navigation */}
-            <div className="md:hidden">
-              <Sheet open={isOpen} onOpenChange={setIsOpen}>
-                <SheetTrigger asChild>
-                  <Button variant="ghost" size="icon">
-                    <Menu className="h-6 w-6 text-sf-gray" />
-                  </Button>
-                </SheetTrigger>
-                <SheetContent side="right" className="w-[300px]">
-                  <div className="flex flex-col space-y-4 mt-8">
-                    {navItems.map((item) => (
-                      <button
-                        key={item.href}
-                        onClick={() => handleNavClick(item.href)}
-                        className={cn(
-                          "text-left p-2 transition-colors duration-200 hover:text-sf-blue",
-                          activeSection === item.href ? "text-sf-blue" : "text-sf-gray"
-                        )}
-                      >
-                        {item.label}
-                      </button>
-                    ))}
-                  </div>
-                </SheetContent>
-              </Sheet>
+            {/* Mobile menu button */}
+            <div className="md:hidden absolute right-6">
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="p-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg"
+              >
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
             </div>
           </div>
         </div>
+
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <div className="md:hidden bg-white border-t border-gray-100">
+            <div className="px-4 pt-2 pb-3 space-y-1">
+              {navItems.map((item) => (
+                <button
+                  key={item.href}
+                  onClick={() => handleNavClick(item.href)}
+                  className={cn(
+                    "block w-full text-left px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200",
+                    activeSection === item.href 
+                      ? "bg-blue-600 text-white" 
+                      : "text-gray-700 hover:text-blue-600 hover:bg-blue-50"
+                  )}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
       </nav>
     </>
   );
