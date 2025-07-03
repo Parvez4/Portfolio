@@ -52,8 +52,8 @@ export default function Navigation() {
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       />
-      <nav className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm shadow-lg border-b border-gray-200 z-50 transform-gpu">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-50/30 to-purple-50/30"></div>
+      <nav className="fixed top-0 left-0 right-0 bg-white shadow-lg border-b border-gray-200" style={{zIndex: 9999}}>
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-50/50 to-purple-50/50 pointer-events-none"></div>
         <div className="max-w-6xl mx-auto px-6 relative">
           <div className="flex justify-center items-center h-16">
             {/* Desktop Navigation - Centered */}
@@ -63,7 +63,7 @@ export default function Navigation() {
                   key={item.href}
                   onClick={() => handleNavClick(item.href)}
                   className={cn(
-                    "px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 transform-gpu",
+                    "px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 relative z-10",
                     activeSection === item.href 
                       ? "bg-blue-600 text-white shadow-lg scale-105 border border-blue-500" 
                       : "text-gray-700 hover:text-blue-600 hover:bg-blue-50 hover:shadow-md hover:-translate-y-0.5"
@@ -78,7 +78,7 @@ export default function Navigation() {
             <div className="md:hidden absolute right-6">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="p-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg"
+                className="p-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg relative z-10"
               >
                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
