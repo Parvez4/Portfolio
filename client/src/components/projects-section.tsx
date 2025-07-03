@@ -123,7 +123,7 @@ export default function ProjectsSection() {
         
         {/* Project Content */}
         <div className="p-6">
-          <p className="text-sf-gray mb-6 leading-relaxed">
+          <p className="text-gray-600 mb-6 leading-relaxed">
             {project.description}
           </p>
           
@@ -132,7 +132,7 @@ export default function ProjectsSection() {
             {project.technologies.map((tech, techIndex) => (
               <Badge 
                 key={techIndex} 
-                className="bg-gray-100 text-gray-700 hover:bg-sf-blue hover:text-white transition-colors"
+                className="bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition-colors"
               >
                 {tech}
               </Badge>
@@ -194,14 +194,14 @@ export default function ProjectsSection() {
 
         {/* Call to Action */}
         <div className="text-center mt-16">
-          <div className="bg-sf-gradient rounded-2xl p-8 text-white">
-            <h3 className="text-3xl font-bold mb-4">Ready to Build Something Amazing?</h3>
-            <p className="text-xl mb-6 text-gray-100">
+          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white shadow-lg">
+            <h3 className="text-3xl font-bold mb-4 text-white">Ready to Build Something Amazing?</h3>
+            <p className="text-xl mb-6 text-white/90">
               Let's discuss how I can help transform your business processes with innovative Salesforce solutions
             </p>
             <Button 
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="bg-white text-sf-blue px-8 py-3 text-lg font-semibold hover:bg-gray-100 transition-all duration-300"
+              className="bg-white text-blue-600 px-8 py-3 text-lg font-semibold hover:bg-gray-100 transition-all duration-300 shadow-md"
             >
               Start a Conversation
             </Button>

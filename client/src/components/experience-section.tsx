@@ -5,7 +5,7 @@ import { Calendar, MapPin, Award, TrendingUp } from "lucide-react";
 export default function ExperienceSection() {
   const experiences = [
     {
-      title: "Senior Salesforce Developer",
+      title: "Salesforce Developer",
       company: "Cognizant Technology Solutions",
       period: "Aug 2023 – Apr 2024",
       location: "Bengaluru, India",

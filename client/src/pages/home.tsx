@@ -39,7 +39,7 @@ export default function Home() {
                   href={social.href}
                   target={social.href.startsWith('http') ? '_blank' : undefined}
                   rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="text-gray-400 hover:text-blue-400 transition-colors duration-300 p-2"
+                  className="text-gray-400 hover:text-blue-400 transition-all duration-300 p-3 rounded-lg hover:bg-gray-800 hover:shadow-lg transform hover:-translate-y-1"
                   title={social.label}
                 >
                   <i className={`${social.icon} text-xl`}></i>

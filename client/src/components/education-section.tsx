@@ -38,9 +38,9 @@ export default function EducationSection() {
 
   const achievements = [
     "Dean's List Recognition (Expected 2025)",
-    "Graduate Research Assistant Position",
+    "Graduate Research Assistant Position", 
     "Advanced Coursework in Cloud Computing",
-    "Thesis Focus: Salesforce Architecture Optimization"
+    "Won 2 back-to-back Luddy Hackathons for building AI agents from scratch"
   ];
 
   return (

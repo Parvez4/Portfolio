@@ -212,10 +212,13 @@ export default function ContactSection() {
                     href={social.url}
                     target={social.url.startsWith('http') ? '_blank' : undefined}
                     rel={social.url.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className={`flex items-center space-x-3 p-3 rounded-lg ${social.color} text-white transition-all hover:scale-105`}
+                    className={`flex items-center space-x-3 p-4 rounded-xl ${social.color} text-white transition-all hover:scale-105 hover:shadow-lg transform hover:-translate-y-1 shadow-md`}
+                    style={{
+                      boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+                    }}
                   >
                     {social.icon}
-                    <span className="font-medium">{social.name}</span>
+                    <span className="font-semibold">{social.name}</span>
                   </a>
                 ))}
               </div>
