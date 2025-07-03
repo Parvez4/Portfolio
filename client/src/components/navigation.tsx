@@ -49,13 +49,13 @@ export default function Navigation() {
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       />
-      <nav className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md shadow-sm z-50">
+      <nav className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-xl shadow-lg border-b border-gray-200/20 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+          <div className="flex justify-between items-center h-20">
             <div className="flex-shrink-0">
               <button
                 onClick={() => handleNavClick("home")}
-                className="text-xl font-bold text-sf-blue hover:text-sf-dark-blue transition-colors"
+                className="text-2xl font-bold bg-sf-gradient bg-clip-text text-transparent hover:scale-105 transition-transform duration-300"
               >
                 Parvez Shaik
               </button>
@@ -69,8 +69,10 @@ export default function Navigation() {
                     key={item.href}
                     onClick={() => handleNavClick(item.href)}
                     className={cn(
-                      "transition-colors duration-200 hover:text-sf-blue",
-                      activeSection === item.href ? "text-sf-blue" : "text-sf-gray"
+                      "px-4 py-2 rounded-lg font-medium transition-all duration-300 hover:scale-105",
+                      activeSection === item.href 
+                        ? "text-white bg-sf-gradient shadow-lg" 
+                        : "text-sf-gray hover:text-sf-blue hover:bg-sf-blue/10"
                     )}
                   >
                     {item.label}

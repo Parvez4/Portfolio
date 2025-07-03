@@ -22,15 +22,19 @@
   --destructive: hsl(0, 84.2%, 60.2%);
   --destructive-foreground: hsl(220, 9.1%, 97.8%);
   --ring: hsl(220, 14.3%, 4.1%);
-  --radius: 0.5rem;
+  --radius: 0.75rem;
   
-  /* Custom colors for Salesforce theme */
+  /* Enhanced Salesforce theme colors */
   --sf-blue: hsl(207, 90%, 54%);
   --sf-dark-blue: hsl(224, 76%, 48%);
   --sf-light-blue: hsl(217, 91%, 60%);
   --sf-gray: hsl(215, 20%, 65%);
   --sf-dark-gray: hsl(215, 28%, 17%);
   --sf-light-gray: hsl(210, 40%, 98%);
+  --sf-gradient: linear-gradient(135deg, hsl(207, 90%, 54%) 0%, hsl(217, 91%, 60%) 100%);
+  --sf-hero-gradient: linear-gradient(135deg, hsl(240, 100%, 3%) 0%, hsl(224, 76%, 48%) 50%, hsl(207, 90%, 54%) 100%);
+  --sf-accent: hsl(196, 100%, 47%);
+  --sf-success: hsl(142, 71%, 45%);
 }
 
 .dark {
@@ -116,5 +120,114 @@
   
   .border-sf-blue {
     border-color: var(--sf-blue);
+  }
+  
+  .bg-sf-gradient {
+    background: var(--sf-gradient);
+  }
+  
+  .bg-sf-hero-gradient {
+    background: var(--sf-hero-gradient);
+  }
+  
+  .text-gradient {
+    background: var(--sf-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out forwards;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+  
+  .skill-card {
+    transition: all 0.3s ease;
+    border: 1px solid rgba(59, 130, 246, 0.1);
+  }
+  
+  .skill-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(59, 130, 246, 0.15);
+    border-color: var(--sf-blue);
+  }
+  
+  .project-card {
+    transition: all 0.4s ease;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--sf-gradient);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+  
+  .project-card:hover::before {
+    transform: scaleX(1);
+  }
+  
+  .project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
   }
 }
