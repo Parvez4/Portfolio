@@ -5,7 +5,7 @@ import { Cloud, Database, Code, Zap, Globe, Shield } from "lucide-react";
 export default function SkillsSection() {
   const skillCategories = [
     {
-      title: "Salesforce Platform",
+      title: "CRM Platform",
       icon: <Cloud className="w-8 h-8 text-blue-600" />,
       color: "bg-blue-50 border-blue-200",
       skills: [
@@ -39,7 +39,7 @@ export default function SkillsSection() {
         { name: "REST APIs", level: 85 },
         { name: "SOQL/SOSL", level: 90 },
         { name: "Data Loader", level: 80 },
-        { name: "Salesforce APIs", level: 85 },
+        { name: "CRM APIs", level: 85 },
         { name: "Postman", level: 80 }
       ]
     },
@@ -120,7 +120,7 @@ export default function SkillsSection() {
         {/* Certifications */}
         <div className="bg-white rounded-2xl p-8 shadow-lg">
           <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-            Salesforce Certifications
+            Professional Certifications
           </h3>
           <div className="flex flex-wrap justify-center gap-4">
             {certifications.map((cert, index) => (
@@ -141,7 +141,7 @@ export default function SkillsSection() {
               Professional Goal
             </h3>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              To leverage my Salesforce expertise and full-stack development skills to build innovative, 
+              To leverage my CRM platform expertise and full-stack development skills to build innovative, 
               scalable solutions that transform business processes and drive digital transformation for 
               organizations across various industries.
             </p>

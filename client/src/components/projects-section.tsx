@@ -164,14 +164,14 @@ export default function ProjectsSection() {
             Featured <span className="text-gradient">Projects</span>
           </h2>
           <p className="text-xl text-sf-gray max-w-3xl mx-auto">
-            Showcase of technical solutions and innovations across Salesforce and full-stack development
+            Showcase of technical solutions and innovations across CRM platforms and full-stack development
           </p>
         </div>
         
-        {/* Salesforce Projects */}
+        {/* Professional Projects */}
         <div className="mb-16">
           <h3 className="text-3xl font-bold text-sf-dark-gray mb-8 text-center">
-            <span className="sf-blue">⚡</span> Salesforce Solutions
+            <span className="sf-blue">⚡</span> Professional Solutions
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {salesforceProjects.map((project, index) => (

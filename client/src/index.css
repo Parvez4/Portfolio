@@ -119,6 +119,27 @@ textarea:focus-visible {
   outline-offset: 2px;
 }
 
+/* Enhanced 3D Shadow Effects */
+.shadow-3xl {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.shadow-4xl {
+  box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.3);
+}
+
+/* Professional 3D Button Effects */
+.btn-3d {
+  transform: perspective(1000px) rotateX(0deg);
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn-3d:hover {
+  transform: perspective(1000px) rotateX(-5deg) translateY(-2px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
 /* Typography */
 .text-balance {
   text-wrap: balance;
